@@ -178,14 +178,12 @@ const dataList = [
     :data="dataList"
     layout="grid"
     gap="2"
-    :componentProps="{
+    :component-props="{
       itemStyle: styleItem,
-      padding: 'p-4',
+      padding: 'p-1',
       margin: '',
     }"
   />
-
-  <div>---------------------------------</div>
 
   <!-- <Icard
     :item="data"

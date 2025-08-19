@@ -300,7 +300,7 @@ const columnsData = computed<ColumnData[]>(() => {
             v-for="img in col.media"
             :key="img.key"
             :class="['image-componet', img.styleClasses]"
-          ></div>
+          />
 
           <div
             v-for="img in col.media"
@@ -322,7 +322,7 @@ const columnsData = computed<ColumnData[]>(() => {
             v-for="label in col.labels"
             :key="label.key"
             :class="label.style.class"
-            :configComponentText="{
+            :config-component-text="{
               text:
                 typeof label.value === 'string'
                   ? label.value
