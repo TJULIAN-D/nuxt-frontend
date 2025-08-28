@@ -4,10 +4,6 @@ defineProps<{ page: PageData }>()
 import { ref, computed } from "vue";
 import type { AccordionItem } from "@nuxt/ui";
 
-definePageMeta({
-  layout: 'master'
-})
-
 type Office = { id:number; title:string; summary:string; iframe?:string; address?:string }
 
 const offices: Office[] = [
@@ -57,13 +53,12 @@ const active = ref("0");
       :ui="{ link: 'font-bold text-gray-3' }"
     />
     <div class="bg-gray-2">
-      {{ page.id }}
     <section class=" container mx-auto py-10 px-4 sm:px-6 lg:px-10">
       <div class="grid gap-10 grid-cols-1 md:grid-cols-3">
         <!-- Columna izquierda: Filtros -->
         <aside class="md:col-span-1 filters">
           <UCard class="shadow-md">
-            <h1 class="font-[24px] font-semibold text-primary">Oficinas</h1>
+            <h1 class="text-[24px]  text-primary font-semibold">Oficinas</h1>
             <UAccordion v-model="active" :items="items" >
               <template #body="{ item }">
                 <div class="border-t border-gray-200 pt-4">
