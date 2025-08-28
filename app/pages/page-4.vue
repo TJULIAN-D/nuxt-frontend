@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import CardCustom from "~/components/CardCustom.vue";
-import ICard from "~/components/ICard.vue";
+
+import IrentcarCard from "#irentcar/components/IrentcarCard/IrentcarCard.vue";
 
 // definePageMeta({
 //   layout: "master",
@@ -107,7 +108,7 @@ const isFilterSelected = (filterId: number) => {
 
 </script>
 <template >
-  <div class="bg-white">dw
+  <div class="bg-white">
     <i data-lucide="screen-share" />
     <!-- Atención al cliente -->
     <div class="relative h-[260px] md:h-[350px]">
@@ -125,6 +126,9 @@ const isFilterSelected = (filterId: number) => {
       </div>
     </div>
     <IBreadcrumb :title="'Atención al cliente'" :ui="{ link: 'font-bold text-gray-3' }" />
+
+
+    <IrentcarCard/>
 
     <section class="container mx-auto py-10 px-4 sm:px-6 lg:px-10">
       <div class="grid gap-10 grid-cols-1 md:grid-cols-3">
@@ -159,7 +163,7 @@ const isFilterSelected = (filterId: number) => {
           <div v-else-if="error">Error: {{ error.message }}</div>
 
           <div v-else>
-            <IList title="Vehículos Disponibles" description="Encuentra el vehículo perfecto para tu viaje"
+            <IList
               :items="data?.data" :item-component="CardCustom" grid-cols="grid-cols-1 md:grid-cols-2 lg:grid-cols-3" />
           </div>
         </div>
