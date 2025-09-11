@@ -22,6 +22,22 @@ export const irentcarReservationRepository = {
       method: 'GET',
       params
     })
+  },
+
+  async irentcarReservations (params: Record<string, unknown> = {}): Promise<{ data: Reservation[] }>
+  {
+    const {$authApiFetch} = useNuxtApp()
+    return $authApiFetch<{ data: Reservation[] }>(`${baseUrl}/reservations`, {
+      method: 'GET',
+      params
+    })
+  },
+  async irentcarDeleteReservation (id: number): Promise<void>
+  {
+    const {$authApiFetch} = useNuxtApp()
+    return $authApiFetch<void>(`${baseUrl}/reservations/${id}`, {
+      method: 'DELETE'
+    })
   }
 }
 
