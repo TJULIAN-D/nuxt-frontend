@@ -11,19 +11,6 @@ const selectedExtras = computed<Extra[]>(() => resume.value?.gammaOfficeExtras ?
 </script>
 <template>
   <div class="sticky top-4 ">
-    <div class="side-resumen">
-      <h4 class="stepper-title mb-2"> Datos clave del alquiler </h4>
-      <div class="stepper-description">
-        <p>Descripción general de los detalles más importantes sobre los términos de su alquiler</p>
-        <ul>
-          <li>Inclusiones y exclusiones</li>
-          <li>Costes adicionales posibles y mucho más</li>
-        </ul>
-        <p><a href="">Lea los datos clave del alquiler </a></p>
-      </div>
-    </div>
-
-    <hr class=" border-hr my-4"/>
 
     <!-- Detalles -->
     <div class="side-resume relative">
@@ -50,15 +37,14 @@ const selectedExtras = computed<Extra[]>(() => resume.value?.gammaOfficeExtras ?
       </div>
     </div>
 
-    <hr class="border-hr my-4"/>
-
     <!-- Selected Gamma Office -->
     <div v-if="selectedGammaOffice" class="side-resume card-mini">
+      <hr  class="border-hr my-4"/>
       <div class="grid grid-cols-12 gap-x-4">
 
         <!-- Texto -->
-        <div class="col-span-7">
-          <h4 class="stepper-subtitle"> {{ selectedGammaOffice.gamma.summary }} </h4>
+        <div class="col-span-8">
+          <h4 class="stepper-title-2"> {{ selectedGammaOffice.gamma.summary }} </h4>
           <div class="text-[16px] mb-2">{{ selectedGammaOffice.gamma.title }}</div>
           <div class="text-[13px] text-gray-3 mb-2">
             <div class="flex items-center gap-1">
@@ -89,10 +75,11 @@ const selectedExtras = computed<Extra[]>(() => resume.value?.gammaOfficeExtras ?
       </div>
     </div>
 
-    <hr class="border-hr my-4"/>
+    <hr v-if="selectedExtras.length" class="border-hr my-4"/>
 
     <!-- Extras -->
     <div v-if="selectedExtras.length" class="side-resume relative">
+
       <UButton size="xs" variant="soft" class="text-primary absolute right-0 top-0">Editar</UButton>
       <h3 class="stepper-title mb-3 pr-12">Elegir elementos opcionales</h3>
 
@@ -107,10 +94,9 @@ const selectedExtras = computed<Extra[]>(() => resume.value?.gammaOfficeExtras ?
       </template>
     </div>
 
-    <hr class=" border-hr my-4"/>
-
     <!-- Total -->
     <div v-if="selectedGammaOffice" class="main-resume relative">
+      <hr class=" border-hr my-4"/>
       <h3 class="stepper-title mb-3">A pagar a la llegada</h3>
 
       <div class="space-y-1 text-sm">
@@ -130,7 +116,7 @@ const selectedExtras = computed<Extra[]>(() => resume.value?.gammaOfficeExtras ?
 
     </div>
 
-    <hr class="border-hr my-4">
+    <hr v-if="selectedGammaOffice" class="border-hr my-4">
 
     <!-- Price-->
     <div v-if="selectedGammaOffice" class="main-resume relative">
@@ -146,15 +132,15 @@ const selectedExtras = computed<Extra[]>(() => resume.value?.gammaOfficeExtras ?
 
     </div>
 
-    <hr class=" border-hr my-4"/>
-
-    <div v-if="selectedGammaOffice" class="stepper-summary text-gray-3">El precio COP que se muestra se convierte de la
-      moneda de su
+    <div v-if="selectedGammaOffice" class="stepper-summary text-gray-3">
+      <hr class="border-hr my-4"/>
+      El precio COP que se muestra se convierte de la moneda de su
       destino a USD, y está sujeto a modificaciones en función de las variaciones del tipo de divisa.
     </div>
 
     <hr class="border-hr my-4">
-    <div class="stepper-summary text-gray-3 flex items-center">
+
+    <div class="stepper-summary text-gray-3 flex items-center mb-4">
       <UIcon name="uis:exclamation-triangle" class="mr-1"></UIcon>
       Con este vehículo puede recorrer un kilometraje ilimitado
     </div>

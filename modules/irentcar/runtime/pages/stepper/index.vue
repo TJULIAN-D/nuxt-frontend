@@ -9,6 +9,8 @@ import ExtrasStep from './extrasStep.vue'
 import ContractStep from './contractStep.vue'
 import ReviewStep from './reviewStep.vue'
 
+const settingStore = useIsettingStore()
+
 const step = ref(0)
 const loading = ref(false)
 const gammaOffices = ref<GammaOffice[]>([])
@@ -42,6 +44,13 @@ const ctx: RentCtx = {
   next, prev
 }
 provide(RENT_CTX, ctx)
+
+useSeoMeta({
+  title: () => `Reservación | ${settingStore.get('isite::siteName')}`,
+  ogTitle: () => `Reservación | ${settingStore.get('isite::siteName')}`,
+  description: () => `Reservación | ${settingStore.get('isite::siteName')}`,
+  ogDescription: () => `Reservación | ${settingStore.get('isite::siteName')}`,
+})
 </script>
 
 <template>
@@ -69,15 +78,19 @@ provide(RENT_CTX, ctx)
     </UStepper>
   </section>
 </template>
-<style scoped>
+<style>
 @reference "~/assets/css/main.css";
 /***** MAIN ******/
 .main-stepper .stepper-title {
-  @apply font-semibold text-[20px] text-primary;
+  @apply font-bold text-[20px] text-primary;
+}
+
+.main-stepper .stepper-title-2 {
+  @apply font-bold text-[18px] text-primary;
 }
 
 .main-stepper .stepper-subtitle {
-  @apply font-bold text-[18px] text-primary;
+  @apply font-semibold text-[18px] text-primary;
 }
 
 .main-stepper .stepper-summary {
@@ -87,15 +100,34 @@ provide(RENT_CTX, ctx)
 .main-stepper .stepper-description {
   @apply text-[15px];
 
-  & a, & .active {
-    color: var(--color-secondary);
+  & a {
     @apply underline;
+  }
+
+  & :is(h1,h2,h3,h4) { @apply font-bold text-[16px] mb-[10px]; }
+
+  & ol {
+    list-style: decimal !important;
+    padding-left: 1.25rem;
+  }
+
+  & ul {
+    list-style: disc !important;
+    padding-left: 1.25rem;
+  }
+  & hr {
+    border-color: #62748E4D;
+    margin: 1rem 0;
   }
 }
 
 /***** SIDE ******/
 .side-stepper .stepper-title {
-  @apply font-semibold text-[18px] text-primary;
+  @apply font-bold text-[18px] text-primary;
+}
+
+.side-stepper .stepper-title-2 {
+  @apply font-bold text-[16px] text-primary;
 }
 
 .side-stepper .stepper-subtitle {
@@ -109,10 +141,11 @@ provide(RENT_CTX, ctx)
 .side-stepper .stepper-description {
   @apply text-[14px] text-primary;
 
-  & a, & .active {
-    color: var(--color-secondary);
+  & a {
     @apply underline;
   }
+
+  & :is(h1,h2,h3,h4) { @apply font-bold text-[16px] mb-[10px]; }
 
   & ol {
     list-style: decimal !important;
@@ -122,6 +155,10 @@ provide(RENT_CTX, ctx)
   & ul {
     list-style: disc !important;
     padding-left: 1.25rem;
+  }
+  & hr {
+    border-color: #62748E4D;
+    margin: 1rem 0;
   }
 }
 
